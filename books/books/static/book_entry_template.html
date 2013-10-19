@@ -9,15 +9,22 @@
 			<h3 id="header">
 				<span id="title_outer"><span id="title">{{title}}</span></span>
 			</h3>
+			<div class="availability">
+				{{#if shared_by.length}}
+				<div class="label label-success">Available</div>
+				{{else}}
+				<div class="label label-warning">Unavailable</div>
+				{{/if}}
+			</div>
 			<h4 class="inline">Author:</h4> <span id="name">{{author}}</span>
 
 			<div id="book_description">{{description}}</div>
 			<div class="book_taglist">
-				<div class="book_tag">productivity</div>
-				<div class="book_tag">cash</div>
-				<div class="book_tag">manele misto</div>
+				<div class="badge">productivity</div>
+				<div class="badge">self-learning</div>
 			</div>
 			<div class="book_status">
+				<button class="btn btn-inverse">Get Book</button>
 			</div>
 		</div>
 	</div>
