@@ -117,3 +117,7 @@ h4.inline {
   padding-top: 20px;
 }
 
+.hand_on_hover {
+	cursor: pointer;
+}
+
