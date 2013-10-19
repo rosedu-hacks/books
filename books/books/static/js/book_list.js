@@ -15,6 +15,7 @@ function load_books(tags) {
 			var books = data.objects;
 			for (var i in books) {
 				entry = $(".book_list").append(template(books[i]));
+				$(".book_views", entry).text(Math.random() * 500 | 0);
 				load_entry(entry, books[i]);
 			}
 		});
