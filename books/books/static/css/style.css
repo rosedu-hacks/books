@@ -4,6 +4,7 @@ body {
 
 .book_entry {
 	border: 1px solid #eaeaea;
+	border-bottom: none;
 	-webkit-border-radius: 12px;
 	padding: 5px;
 	overflow: hidden;
