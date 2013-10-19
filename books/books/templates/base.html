@@ -1,13 +1,19 @@
 <!doctype html>
 <html>
   <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <title>Books!</title>
-  <!-- TODO import scripts and stylesheets-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Books!</title>
+    <!-- TODO import scripts and stylesheets-->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
   </head>
   <body>
-    <h1> Books!!! </h1>
-  {% block content %}
-  {% endblock %}
+    <div class="content">
+      <ul class="nav nav-pills">
+        <li><a href="/">Home</a></li>
+      </ul>
+      {% block content %}
+      {% endblock %}
+    </div>
   </body>
 </html>
