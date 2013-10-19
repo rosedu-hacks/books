@@ -1,0 +1,79 @@
+.book_entry {
+	border: 1px solid #eaeaea;
+	-webkit-border-radius: 12px;
+	padding: 5px;
+	overflow: hidden;
+	display: -webkit-flex;
+}
+.stats {
+	-webkit-flex-shrink: 0;
+	padding: 5px;
+}
+
+.summary {
+	padding: 5px;
+}
+.summary > h3 {
+	margin: 0px;
+	padding: 0px;
+}
+.summary > #book_description {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #eaeaea;
+}
+
+.book_tag {
+	display: inline-block;
+	background-color: #E0EAF1;
+	border-bottom: 1px solid #b3cee1;
+	border-right: 1px solid #b3cee1;
+	padding: 3px 4px 3px 4px;
+}
+
+.book_taglist {
+	float: left;
+}
+.book_status {
+	float: right;
+}
+
+h4.inline {
+	display: inline;
+	color: #666;
+}
+
+.book_status {
+	margin-top: 10px;
+}
+
+.button {
+	font-height: 20px;
+	font-weight:bold;
+	-webkit-border-radius: 12px;
+	text-decoration: none;
+	color: white;
+	background-color: green;
+	border-width: 1px;
+	border-style: solid;
+	padding: 3px 4px 3px 4px;
+}
+
+.available {
+	background-color: green;
+	border-color: green;
+}
+
+.unavailable {
+	background-color: red;
+	border-color: red;
+}
+
+.stats_count {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 3px;
+	color: #999;
+}
