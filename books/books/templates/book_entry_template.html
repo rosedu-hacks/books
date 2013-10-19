@@ -1,0 +1,176 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.book_entry {
+			border: 1px solid #eaeaea;
+			-webkit-border-radius: 12px;
+			padding: 5px;
+			overflow: hidden;
+			display: -webkit-flex;
+		}
+		.stats {
+			-webkit-flex-shrink: 0;
+			padding: 5px;
+		}
+
+		.summary {
+			padding: 5px;
+		}
+		.summary > h3 {
+			margin: 0px;
+			padding: 0px;
+		}
+		.summary > #book_description {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-top: 1px solid #eaeaea;
+		}
+
+		.book_tag {
+			display: inline-block;
+			background-color: #E0EAF1;
+			border-bottom: 1px solid #b3cee1;
+			border-right: 1px solid #b3cee1;
+			padding: 3px 4px 3px 4px;
+		}
+
+		.book_taglist {
+			float: left;
+		}
+		.book_status {
+			float: right;
+		}
+
+		h4.inline {
+			display: inline;
+			color: #666;
+		}
+
+		.book_status {
+			margin-top: 10px;
+		}
+
+		.button {
+			font-height: 20px;
+			font-weight:bold;
+			-webkit-border-radius: 12px;
+			text-decoration: none;
+			color: white;
+			background-color: green;
+			border-width: 1px;
+			border-style: solid;
+			padding: 3px 4px 3px 4px;
+		}
+
+		.available {
+			background-color: green;
+			border-color: green;
+		}
+
+		.unavailable {
+			background-color: red;
+			border-color: red;
+		}
+
+		.stats_count {
+			text-align: center;
+			padding-top: 5px;
+			padding-bottom: 3px;
+			color: #999;
+		}
+	</style>
+</head>
+<body>
+	<p>Templates example</p>
+
+	<div class="book_entry">
+		<div class="stats">
+			<img id="book_cover" src="http://bks5.books.google.com/books?id=buc0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+			<div class="stats_count">
+				<span class="book_views">254</span> views
+			</div>
+		</div>
+		<div class="summary">
+			<h3 id="header">
+				<span id="title_outer"><span id="title">How to make a million bucks</span></span>
+			</h3>
+			<h4 class="inline">Author:</h4> <span id="name">Catalin Badea</span>
+
+			<div id="book_description">His pants are square and he lives at the bottom of the sea and his friend is a star. He might be absorbent and porous and yellow but that doesn't stop him striving for his dream to be the world's best fry cook ... or to stop evil Plankton's attempts to steal the secret Krabby Patty formula. Will he reach his goals and will he able to thwart Plankton's dastardly plans and win the affections of Sandy the land-dwelling mammal in the process?</div>
+			<div class="book_taglist">
+				<div class="book_tag">productivity</div>
+				<div class="book_tag">cash</div>
+				<div class="book_tag">manele misto</div>
+			</div>
+			<div class="book_status">
+				<a href="LINK" class="button available">Get Book</a>
+				<a href="LINK" class="button available">Share book</a>
+				<a href="LINK" class="button available">Add to wishlist</a>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="book_entry">
+		<div class="stats">
+			<img id="book_cover" src="http://bks5.books.google.com/books?id=buc0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+			<div class="stats_count">
+				<span class="book_views">15</span> views
+			</div>
+		</div>
+		<div class="summary">
+			<h3 id="header">
+				<span id="title_outer"><span id="title">How to make a million bucks</span></span>
+			</h3>
+			<h4 class="inline">Author:</h4> <span id="name">Catalin Badea</span>
+
+			<div id="book_description">His pants are square and he lives at the bottom of the sea and his friend is a star. He might be absorbent and porous and yellow but that doesn't stop him striving for his dream to be the world's best fry cook ... or to stop evil Plankton's attempts to steal the secret Krabby Patty formula. Will he reach his goals and will he able to thwart Plankton's dastardly plans and win the affections of Sandy the land-dwelling mammal in the process?</div>
+			<div class="book_taglist">
+				<div class="book_tag">productivity</div>
+				<div class="book_tag">cash</div>
+				<div class="book_tag">manele misto</div>
+			</div>
+			<div class="book_status">
+				<a href="LINK" class="button unavailable">Get Book</a>
+				<a href="LINK" class="button available">Share book</a>
+				<a href="LINK" class="button available">Add to wishlist</a>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="book_entry">
+		<div class="stats">
+			<img id="book_cover" src="http://bks5.books.google.com/books?id=buc0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+			<div class="stats_count">
+				<span class="book_views">15</span> views
+			</div>
+		</div>
+		<div class="summary">
+			<h3 id="header">
+				<span id="title_outer"><span id="title">How to make a million bucks</span></span>
+			</h3>
+			<h4 class="inline">Author:</h4> <span id="name">Catalin Badea</span>
+
+			<div id="book_description">His pants are square and he lives at the bottom of the sea and his friend is a star. He might be absorbent and porous and yellow but that doesn't stop him striving for his dream to be the world's best fry cook ... or to stop evil Plankton's attempts to steal the secret Krabby Patty formula. Will he reach his goals and will he able to thwart Plankton's dastardly plans and win the affections of Sandy the land-dwelling mammal in the process?</div>
+			<div class="book_taglist">
+				<div class="book_tag">productivity</div>
+				<div class="book_tag">cash</div>
+				<div class="book_tag">manele misto</div>
+			</div>
+			<div class="book_status">
+				<a href="LINK" class="button unavailable">Get Book</a>
+				<a href="LINK" class="button available">Share book</a>
+				<a href="LINK" class="button available">Add to wishlist</a>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>
