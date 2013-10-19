@@ -22,7 +22,7 @@ class Register(FormView):
             username = user.username
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('profile', user.pk)
+            return redirect('overview')
         return render(request, self.template_name, {'form': form})
 
 class Profile(DetailView):

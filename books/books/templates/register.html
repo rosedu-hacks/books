@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
 <div class="center">
@@ -16,5 +16,6 @@
     {% if form.errors %}
     {{form.errors}}
     {% endif %}
+    Already registered? <a href="/login">Login</a>
 </div>
 {% endblock %}
