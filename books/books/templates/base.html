@@ -1,13 +1,26 @@
 <!doctype html>
 <html>
   <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-  <title>Books!</title>
-  <!-- TODO import scripts and stylesheets-->
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>Books!</title>
+    <!-- TODO import scripts and stylesheets-->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
   </head>
   <body>
-    <h1> Books!!! </h1>
-  {% block content %}
-  {% endblock %}
+      <nav class="navbar navbar-inverse" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Books</a>
+      </div>
+      </nav>
+
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
   </body>
 </html>

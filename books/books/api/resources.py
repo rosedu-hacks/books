@@ -1,4 +1,5 @@
 from tastypie.resources import ModelResource
+from tastypie.constants import ALL
 from tastypie import fields
 
 from books.models import Book, Tag, Person
@@ -24,7 +25,10 @@ class BookResource(ModelResource):
     shared_by = fields.ToManyField(PersonResource, 'shared_by')
     reccomended_by = fields.ToManyField(PersonResource, 'reccomended_by')
 
+
+
     class Meta:
         queryset = Book.objects.all()
         resource_name = 'books'
+        filtering = {'title': ALL}
 

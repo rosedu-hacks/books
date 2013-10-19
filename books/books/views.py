@@ -5,6 +5,8 @@ from django.views.generic import FormView, DetailView
 from django.shortcuts import redirect, render
 from books.models import Person
 
+from models import Book
+
 class Overview(TemplateView):
     template_name = 'overview.html'
 
@@ -30,4 +32,8 @@ class Profile(DetailView):
     def get_context_data(self, **kwargs):
         context = super(Profile, self).get_context_data(**kwargs)
         return context
+class BookView(DetailView):
+    template_name = 'book.html'
+    model = Book
+    context_object_name = 'book'
 
