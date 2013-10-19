@@ -16,11 +16,13 @@ class PersonResource(ModelResource):
 class BookResource(ModelResource):
     description = fields.CharField(attribute='description')
     picture_url = fields.CharField(attribute='picture_url')
-    rented_by = fields.ListField(attribute='rented_by')
+    rented_by = fields.ToManyField(PersonResource,
+                                   attribute=lambda bundle: bundle.obj.rented_by,
+                                   null=True, blank=True)
 
     tags = fields.ToManyField(TagResource, 'tags')
-    shared_by = fields.ToManyField(TagResource, 'shared_by')
-    reccomended_by = fields.ToManyField(TagResource, 'reccomended_by')
+    shared_by = fields.ToManyField(PersonResource, 'shared_by')
+    reccomended_by = fields.ToManyField(PersonResource, 'reccomended_by')
 
     class Meta:
         queryset = Book.objects.all()

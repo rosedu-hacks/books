@@ -19,7 +19,8 @@ class Book(models.Model):
     def rented_by(self):
         """Return the persons who rented the current book"""
         rentals = self.rentals.all()
-        return [r.to for r in rentals]
+        pks = [r.to.pk for r in rentals]
+        return Person.objects.filter(pk__in=pks)
 
 class Tag(models.Model):
     """Available tags that can be put on books"""
@@ -33,9 +34,13 @@ class Person(models.Model):
     shared = models.ManyToManyField('Book', related_name='shared_by')
 
     ###Books that I rented from others
-    reccomended = models.ManyToManyField('Book', through='Reccomendation', related_name='reccomended_by')
-    whishlist = models.ManyToManyField('Book', related_name='wished_by')
-    read_books = models.ManyToManyField('Book', related_name='read_by')
+    reccomended = models.ManyToManyField('Book', through='Reccomendation',
+                                         related_name='reccomended_by',
+                                         null=True, blank=True)
+    whishlist = models.ManyToManyField('Book', related_name='wished_by',
+                                       null=True, blank=True)
+    read_books = models.ManyToManyField('Book', related_name='read_by',
+                                        null=True, blank=True)
 
     def __unicode__(self):
         return self.name
