@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> I haz one book. </h2>
+
+<p> Desc: {{ book.description }} </p>
+<p> Id: {{ book.pk }} </p>
+<img src="{{ book.picture_url }}"/>
+
+{% endblock %}
