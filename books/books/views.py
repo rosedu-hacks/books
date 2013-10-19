@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
-from books.forms import LoginForm
+from books.forms import RegisterForm
 from django.views.generic import FormView, DetailView
 from django.shortcuts import redirect, render
 from books.models import Person
@@ -12,10 +12,10 @@ class Overview(TemplateView):
 
 class Register(FormView):
     template_name = 'register.html'
-    form_class = LoginForm
+    form_class = RegisterForm
     
     def post(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             password = form.cleaned_data['password2']
             user = form.save()

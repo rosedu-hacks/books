@@ -26,11 +26,9 @@ class Book(models.Model):
 class Tag(models.Model):
     """Available tags that can be put on books"""
     name = models.CharField(max_length=20)
-    books = models.ManyToManyField('Book', related_name='tags')
+    books = models.ManyToManyField('Book', related_name='tags', null=True, blank=True)
 
 class Person(User):
-    
-    name = models.CharField(max_length=20)
     ###Sharing stuff
     shared = models.ManyToManyField('Book', related_name='shared_by')
 
@@ -42,6 +40,13 @@ class Person(User):
                                        null=True, blank=True)
     read_books = models.ManyToManyField('Book', related_name='read_by',
                                         null=True, blank=True)
+
+    @property
+    def name(self):
+        return " ".join([self.first_name, self.last_name])
+
+    def tag_names(self):
+        return [t.name for t in self.tags.all()]
 
     def __unicode__(self):
         return self.name
