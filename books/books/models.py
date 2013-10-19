@@ -15,6 +15,13 @@ class Book(models.Model):
     def description(self):
         pass
 
+    @property
+    def rented_by(self):
+        """Return the persons who rented the current book"""
+        rentals = self.rentals.all()
+        return [r.to for r in rentals]
+
+
 class Tag(models.Model):
     """Available tags that can be put on books"""
     name = models.CharField(max_length=20)
