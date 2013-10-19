@@ -9,18 +9,17 @@ class Book(models.Model):
     ###TODO
     @property
     def picture_url(self):
-        pass
+        return "http://bks5.books.google.com/books?id=buc0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
 
     @property
     def description(self):
-        pass
+        return "Lorem Ipsum blablablalblabla"
 
     @property
     def rented_by(self):
         """Return the persons who rented the current book"""
         rentals = self.rentals.all()
         return [r.to for r in rentals]
-
 
 class Tag(models.Model):
     """Available tags that can be put on books"""
