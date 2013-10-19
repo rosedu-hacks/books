@@ -3,16 +3,25 @@ from datetime import datetime
 
 class Book(models.Model):
     """Entry for a generic book"""
-    title = models.TextField(max_length=100)
-    author = models.TextField(max_length=100)
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+
+    ###TODO
+    @property
+    def picture_url(self):
+        pass
+
+    @property
+    def description(self):
+        pass
 
 class Tag(models.Model):
     """Available tags that can be put on books"""
-    name = models.TextField(max_length=20)
+    name = models.CharField(max_length=20)
     books = models.ManyToManyField('Book', related_name='tags')
 
 class Person(models.Model):
-    name = models.TextField(max_length=20)
+    name = models.CharField(max_length=20)
 
     ###Sharing stuff
     shared = models.ManyToManyField('Book', related_name='shared_by')
