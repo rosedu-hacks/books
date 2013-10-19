@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from books.api import v1_api
 
-from views import Overview
+from views import Overview, Register, Profile
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^$', Overview.as_view(), name='overview'),
+    url(r'^register', Register.as_view(), name='register'),
+    url(r'^profile/(?P<pk>\d+)/$', Profile.as_view(), name='profile'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(v1_api.urls)),
 )

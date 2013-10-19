@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 class Book(models.Model):
     """Entry for a generic book"""
@@ -27,9 +28,9 @@ class Tag(models.Model):
     name = models.CharField(max_length=20)
     books = models.ManyToManyField('Book', related_name='tags')
 
-class Person(models.Model):
+class Person(User):
+    
     name = models.CharField(max_length=20)
-
     ###Sharing stuff
     shared = models.ManyToManyField('Book', related_name='shared_by')
 
