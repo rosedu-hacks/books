@@ -28,10 +28,12 @@ class Register(FormView):
 class Profile(DetailView):
     template_name = 'profile.html'
     model = Person
+    context_object_name = 'person'
 
     def get_context_data(self, **kwargs):
         context = super(Profile, self).get_context_data(**kwargs)
         return context
+
 class BookView(DetailView):
     template_name = 'book.html'
     model = Book

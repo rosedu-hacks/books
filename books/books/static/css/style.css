@@ -117,3 +117,7 @@ h4.inline {
   padding-top: 20px;
 }
 
+#personData li {
+  list-style: none;
+  font-size: 18px;
+}

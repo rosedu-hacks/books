@@ -1,5 +1,35 @@
-<html>
-  <body>
-    <h1> dasfdfs </h1>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div id="personData">
+<h1> {{ person.name }} </h1>
+
+{% if person.shared.all %}
+<h3> Shared </h3>
+{% endif %}
+<ul>
+  {% for book in person.shared.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+
+{% if person.whishlist.all %}
+<h3> Wishlist </h3>
+{% endif %}
+<ul>
+  {% for book in person.whishlist.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+
+{% if person.reccomended.all %}
+<h3> Recommends </h3>
+{% endif %}
+<ul>
+  {% for book in person.reccomended.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+</div>
+
+{% endblock %}
