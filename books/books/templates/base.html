@@ -16,8 +16,18 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Books</a>
       </div>
-      </nav>
 
+		<div class="navbar-right">
+		   
+          {% if user.is_authenticated %}
+          <a class="navbar-brand" href="{{site.basepath}}/logout">{{user.first_name}} logout</a>
+          {% else %}
+          <a class="navbar-brand" href="{{site.basepath}}/login">login</a>
+          <a class="navbar-brand" href="{{site.basepath}}/register">register</a>
+          {% endif %}
+  
+		</div>
+    </nav>
     <div class="content">
       {% block content %}
       {% endblock %}
