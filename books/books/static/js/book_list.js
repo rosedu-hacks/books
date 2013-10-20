@@ -74,6 +74,7 @@ function load_books(tags, search_term) {
 			for (var i in books) {
 				entry = $(".book_list").append(template(books[i]));
 				load_entry(entry, books[i]);
+				load_sharing_users(entry, books[i]);
 			}
 		});
 	});
@@ -94,6 +95,7 @@ function load_entry(entry, book) {
         }
     }
     $(".book_taglist", entry).each(function (){
+	$("#" + book.id + " .book_taglist", entry).each(function (){
 		var entry_taglist = $(this);
 		for (var i in book.tags) {
 			$.get(book.tags[i], function (data){ 
@@ -102,6 +104,30 @@ function load_entry(entry, book) {
 			});
 		}
 	});
+}
+
+function load_sharing_users(entry, book) {
+	var sharing_users_url = book.shared_by;
+	var first = true;
+	var count = 0;
+	for (var i in sharing_users_url) {
+		if (first) {
+			$.get(sharing_users_url[i], function(data) {
+				var gravatar = $("#" + book.id + " .first_sharing_user", entry)[0];
+    		gravatar.src = 'http://www.gravatar.com/avatar/' + md5(data.email)
+			});
+			first = false;
+			count = count + 1;
+		}
+		// just count now
+		break;
+	}
+}
+
+var gravatarPreview = function() {
+    var gravatar = document.querySelector('.gravatar-preview');
+    var email = document.querySelector('#id_email').value;
+    gravatar.src = 'http://www.gravatar.com/avatar/' + md5(email)
 }
 
 function tag_click(name) {

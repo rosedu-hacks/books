@@ -2,10 +2,18 @@ body {
   background-image: url('/static/img/bg.gif');
 }
 
+a {
+  text-decoration: none;
+}
+
+.padded {
+  padding: 5px;
+}
+
 .book_entry {
 	border: 1px solid #eaeaea;
-	-webkit-border-radius: 12px;
 	padding: 5px;
+  background-color: #f8f8f8;
 	overflow: hidden;
 	display: -webkit-flex;
 	display: flex;
@@ -13,6 +21,31 @@ body {
   margin-bottom: 10px;
   position: relative;
 }
+
+.top_flex {
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+}
+
+.summary_top {
+	margin: 0px;
+	padding: 0px;
+}
+
+.summary_top > h3 {
+	margin: 0px;
+	padding: 0px;
+}
+.sharing_users {
+}
+
+.sharing_users > h4 {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+
 .stats {
 	-webkit-flex-shrink: 0;
 	flex-shrink: 0;
@@ -20,12 +53,10 @@ body {
 }
 
 .summary {
+	width: 100%;
 	padding: 5px;
 }
-.summary > h3 {
-	margin: 0px;
-	padding: 0px;
-}
+
 .summary > #book_description {
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -109,6 +140,20 @@ h4.inline {
 	color: #999;
 }
 
+#bookForm li {
+  list-style: none;
+}
+
+#bookForm li > label {
+  background-color: lightgreen;
+  border-radius: 3px;
+  align: right;
+}
+
+#bookForm input[type=checkbox] {
+  float: right;
+}
+
 #pageNav {
   background-color: #0f75bc;
   font-size: 30px;
@@ -152,6 +197,7 @@ h4.inline {
 
 .tag_bar {
 	float: right;
-	width: 300px;
+	width: 500px;
 	height: 34px;
+  padding-right: 20px;
 }

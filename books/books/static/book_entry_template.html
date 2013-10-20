@@ -1,19 +1,30 @@
-	<div class="book_entry">
+<div class="book_entry" id="{{id}}">
 		<div class="stats">
 			<img class="book_cover" src={{picture_url}}></img>
 		</div>
 		<div class="summary">
+		<div class="top_flex">
+			<div class="summary_top">
 			<h3 id="header">
-				<span id="title_outer"><span id="title">{{title}}</span></span>
+        <span id="title_outer"><span id="title">{{title}}</span>
+          <a href="/editbook/{{id}}"><span class="glyphicon glyphicon-edit padded"></span></a></span>
 			</h3>
 			<div class="availability">
 				{{#if shared_by.length}}
 				<div class="label label-success">Available</div>
 				{{else}}
-				<div class="label label-warning">Unavailable</div>
+				<div class="label label-danger">Unavailable</div>
 				{{/if}}
 			</div>
 			<h4 class="inline">Author:</h4> <span id="name">{{author}}</span>
+		</div>
+		<div class="sharing_users">
+			{{#if shared_by.length}}
+			<h4>Shared by: </h4>
+			<img class="first_sharing_user"></img>
+			{{/if}}
+		</div>
+		</div> <!-- top_flex -->
 
       <div id="book_description">{{description}}
         <a class="more" href="#">...</a>
@@ -22,10 +33,10 @@
 			</div>
 			<div class="buttons">
         {{#if shared_by.length}}
-        <a href="/getbook/{{id}}"> <button class="btn btn-inverse">Get Book</button> </a>
+        <a href="/getbook/{{id}}"> <button class="btn btn-primary">Get Book</button> </a>
         {{/if}}
-        <a href="/sharing/{{id}}/?action=share"> <button class="btn btn-inverse">Share</button> </a>
-        <a href="/recc/{{id}}"> <button class="btn btn-inverse">Review</button> </a>
+        <a href="/sharing/{{id}}/?action=share"> <button class="btn btn-primary">Share</button> </a>
+        <a href="/recc/{{id}}"> <button class="btn btn-primary">Review</button> </a>
 			</div>
 		</div>
 	</div>
