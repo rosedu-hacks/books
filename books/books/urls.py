@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'logout/$', 'django.contrib.auth.views.logout',
         {'next_page': '/'}),
     url(r'^recc/(?P<pk>\d+)/$', ReccomandationView.as_view(), name='recc'),
+    url(r'^addbook', AddBookView.as_view(), name='addbook'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(v1_api.urls)),
 )

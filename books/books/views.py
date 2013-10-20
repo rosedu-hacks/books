@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
 from books.forms import RegisterForm, ReccomandationForm
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView, DetailView, CreateView
 from django.shortcuts import redirect, render
 from books.models import Person, Reccomendation
 from django.core.urlresolvers import reverse
@@ -92,3 +92,13 @@ class GetBookView(FormView):
         context['book'] = self.book
         return context
 
+class AddBookView(CreateView):
+    template_name = "addbook.html"
+    model = Book
+    fields = ['title', 'author', 'picture_url', 'description']
+    success_url = '/'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(AddBookView, self).dispatch(request, *args, **kwargs)
+    
