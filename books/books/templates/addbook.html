@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Add your book </h1>
+<form method="post" action>
+  {% csrf_token %}
+  <table>
+    {% for field in form %}
+    <tr><td>{{field.label_tag}}</td><td>{{field}}</td></tr>
+    {% endfor %}
+  </table>
+  <button type="submit" class="btn">Share it!</button>
+</form>
+
+{% endblock %}
+
