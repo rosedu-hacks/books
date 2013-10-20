@@ -38,6 +38,12 @@ a {
 	padding: 0px;
 }
 .sharing_users {
+  font-size: 14px;
+}
+
+.sharing_users img {
+  width: 28px;
+  height: 28px;
 }
 
 .sharing_users > h4 {
