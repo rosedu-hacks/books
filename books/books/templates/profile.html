@@ -56,7 +56,7 @@
   <li>
   {{ rental.book.title }} - {{ rental.by.name }}
   {% if rental.status == 0 %}
-  <div class="alert alert-success">Waiting {{ rental.by.name }} to accept your request</div>
+  <div class="alert alert-success">Waiting for {{ rental.by.name }} to accept your request</div>
   {% endif %}
 
   {% if rental.status == 1 %}
