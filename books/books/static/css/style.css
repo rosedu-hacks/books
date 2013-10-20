@@ -47,12 +47,16 @@ body {
 
 }
 
+.book_cover {
+  width: 100px;
+}
+
 .book_taglist {
 	float: left;
 }
 .buttons {
-  position: absolute;
-  bottom: 30px;
+  clear: both;
+  padding-top: 10px;
 }
 
 h4.inline {
