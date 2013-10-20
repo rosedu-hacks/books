@@ -106,7 +106,7 @@ function load_sharing_users(entry, book) {
 	for (var i in sharing_users_url) {
 		if (first) {
 			$.get(sharing_users_url[i], function(data) {
-				var gravatar = $("#" + book.id + " .first_sharing_user", entry)[0];
+				var gravatar = $(".first_sharing_user", entry)[0];
     		gravatar.src = 'http://www.gravatar.com/avatar/' + md5(data.email)
 			});
 			first = false;
