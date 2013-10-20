@@ -14,20 +14,61 @@
 </ul>
 
 {% if person.rentals_to.all %}
-<h3> Given </h3>
+<h3> For others </h3>
 {% endif %}
 <ul>
   {% for rental in person.rentals_to.all %}
-  <li> {{ rental.book.title }} - {{ rental.to.name }} </li>
+  <li>
+  {{ rental.book.title }} - {{ rental.to.name }}
+  {% if rental.status == 0 %}
+  <a href="/accept_decline/{{rental.pk}}/?resolution=accept"><button class="btn btn-inverse">Accept</button></a>
+  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-inverse">Decline</button></a>
+  <div class="alert alert-success">
+    <p>
+    {{ rental.to.name }} wants to get from you {{rental.book.title}}. You can accept or decline his request.
+    </p>
+    <p>
+    By accepting this request you give permission for the app to give {{ rental.to.name }} your email address.
+    </p>
+  </div>
+
+  {% endif %}
+  {% if rental.status == 2 %}
+  <a href="/"><button class="btn btn-inverse">Accept Return</button></a>
+  <div class="alert alert-success">
+    <p>
+    When you have your book back, please press the Accept Return button!
+    </p>
+  </div>
+  {% endif %}
+  </li>
   {% endfor %}
 </ul>
 
 {% if person.rentals_from.all %}
-<h3> Received </h3>
+<h3> From others </h3>
 {% endif %}
 <ul>
   {% for rental in person.rentals_from.all %}
-  <li> {{ rental.book.title }} - {{ rental.by.name }} </li>
+  <li>
+  {{ rental.book.title }} - {{ rental.by.name }}
+  {% if rental.status == 0 %}
+  <span class="label label-success">Waiting {{ rental.by.name }} to accept your request</span>
+  {% endif %}
+  {% if rental.status == 1 %}
+  <a href="/"><button class="btn btn-inverse">Return Book</button></a>
+  <div class="alert alert-success">
+    <p>
+      Your request has been accepted. If don't have the book,
+      please contact {{ rental.by.name }} <a href="mailto:rental.by.email">{{rental.by.email}} </a> to get it!
+    </p>
+    <p>
+      When you are done reading please notify {{ rental.by.name }} by pressing
+      the Retrun Book button
+    </p>
+  </div>
+  {% endif %}
+  </li>
   {% endfor %}
 </ul>
 

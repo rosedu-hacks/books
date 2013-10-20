@@ -70,3 +70,26 @@ class GetBookView(FormView):
         context['book'] = self.book
         return context
 
+### Book sharing floow
+### more info here http://www.youtube.com/watch?v=THvUDMafwkU
+
+@login_required
+def accept_decline_view(request, *args, **kwargs):
+    """View used for accepting or declining rentals"""
+
+    # authorization stuff
+    rental = Rental.objects.get(pk=kwargs['pk'])
+    if rental.by.pk is not request.user.pk:
+        return redirect(reverse('overview'))
+
+    resolution = request.GET.get('resolution', 'decline')
+    if resolution == 'accept':
+        rental.status = Rental.ACCEPTED
+        rental.save()
+    if resolution == 'decline':
+        rental.by.shared.add(rental.book)
+        rental.delete()
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
+
+
