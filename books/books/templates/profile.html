@@ -33,8 +33,8 @@
   </div>
 
   {% endif %}
-  {% if rental.status == 2 %}
-  <a href="/"><button class="btn btn-inverse">Accept Return</button></a>
+  {% if rental.status == 1 %}
+  <a href="/accept_return/{{rental.pk}}/"><button class="btn btn-inverse">Accept Return</button></a>
   <div class="alert alert-success">
     <p>
     When you have your book back, please press the Accept Return button!
@@ -53,18 +53,16 @@
   <li>
   {{ rental.book.title }} - {{ rental.by.name }}
   {% if rental.status == 0 %}
-  <span class="label label-success">Waiting {{ rental.by.name }} to accept your request</span>
+  <div class="alert alert-success">Waiting {{ rental.by.name }} to accept your request</div>
   {% endif %}
+
   {% if rental.status == 1 %}
-  <a href="/"><button class="btn btn-inverse">Return Book</button></a>
   <div class="alert alert-success">
     <p>
       Your request has been accepted. If don't have the book,
-      please contact {{ rental.by.name }} <a href="mailto:rental.by.email">{{rental.by.email}} </a> to get it!
+      please contact {{ rental.by.name }} <a href="mailto:rental.by.email">{{ rental.by.email }} </a> to get it!
     </p>
-    <p>
-      When you are done reading please notify {{ rental.by.name }} by pressing
-      the Retrun Book button
+    When you are done reading please get in touch with {{ rental.by.name }} and return the book.
     </p>
   </div>
   {% endif %}

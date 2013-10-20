@@ -101,7 +101,8 @@ def accept_decline_view(request, *args, **kwargs):
 
     # authorization stuff
     rental = Rental.objects.get(pk=kwargs['pk'])
-    if rental.by.pk is not request.user.pk:
+    if (rental.by.pk is not request.user.pk or
+            rental.status is not Rental.PENDING_SHARE):
         return redirect(reverse('overview'))
 
     resolution = request.GET.get('resolution', 'decline')
@@ -114,4 +115,18 @@ def accept_decline_view(request, *args, **kwargs):
 
     return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
 
+@login_required
+def accept_return_view(request, *args, **kwargs):
+    """View used for accepting or declining rentals"""
+
+    # authorization stuff
+    rental = Rental.objects.get(pk=kwargs['pk'])
+    if (rental.by.pk is not request.user.pk or
+            rental.status is not Rental.ACCEPTED):
+        return redirect(reverse('overview'))
+
+    rental.by.shared.add(rental.book)
+    rental.delete()
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
 
