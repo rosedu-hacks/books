@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="center">
-    <h3> Jois us </h3>
+    <h3> Write your thoughts for {{book.title}} </h3>
     <form method="post" action>
         {% csrf_token %}
           <table>
@@ -11,11 +10,9 @@
             {% endfor %}
         </table>
 
-        <button type="submit" class="btn">Join!</button>
+        <button type="submit" class="btn">Submit</button>
     </form>
     {% if form.errors %}
     {{form.errors}}
     {% endif %}
-    Already registered? <a href="/login">Login</a>
-</div>
 {% endblock %}

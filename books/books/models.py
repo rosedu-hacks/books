@@ -69,5 +69,5 @@ class Rental(models.Model):
 class Reccomendation(models.Model):
     by = models.ForeignKey(Person)
     book = models.ForeignKey(Book)
-    text = models.TextField(max_length=100)
+    text = models.TextField(max_length=500)
 

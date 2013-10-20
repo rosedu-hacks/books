@@ -1,7 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
+from models import Person, Book
 from django import forms
+from django.forms.widgets import Textarea
 from django.forms.extras.widgets import SelectDateWidget
-from models import Person
 
 class RegisterForm(UserCreationForm):
     class Meta:
@@ -16,6 +17,12 @@ class RegisterForm(UserCreationForm):
         person.set_password(password)
         person.save()
         return person
+
+class ReccomandationForm(forms.Form):
+    
+    description = forms.CharField(widget = Textarea())
+    def __init__(self, *args, **kwargs):
+        super(ReccomandationForm, self).__init__(*args, **kwargs)
 
 class GetBookForm(forms.Form):
     return_date = forms.DateField(widget=SelectDateWidget)

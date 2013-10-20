@@ -1,8 +1,9 @@
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
-from books.forms import RegisterForm
+from books.forms import RegisterForm, ReccomandationForm
 from django.views.generic import FormView, DetailView
 from django.shortcuts import redirect, render
+from books.models import Person, Reccomendation
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -42,6 +43,27 @@ class BookView(DetailView):
     template_name = 'book.html'
     model = Book
     context_object_name = 'book'
+
+class ReccomandationView(FormView):
+    template_name = 'recc.html'
+    model = Reccomendation
+    form_class = ReccomandationForm
+    
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        self.book = Book.objects.get(pk = kwargs['pk'])
+        return super(ReccomandationView, self).dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        person = Person.objects.get(pk=request.user.pk)
+        Reccomendation.objects.create(by=person, book=self.book)
+        return redirect(reverse('profile', kwargs={'pk':request.user.pk}))
+
+    def get_context_data(self, **kwargs):
+        context = super(ReccomandationView, self).get_context_data(**kwargs)
+        #context['bookform'] = ReccomandationForm(book=self.book)
+        context['book'] = self.book
+        return context
 
 class GetBookView(FormView):
     template_name = 'getbook.html'
