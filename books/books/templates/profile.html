@@ -1,3 +1,55 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
+{% block content %}
+<div id="personData">
+<h1> {{ person.name }} </h1>
+
+{% if person.shared.all %}
+<h3> Shared </h3>
+{% endif %}
+<ul>
+  {% for book in person.shared.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+
+{% if person.rentals_to.all %}
+<h3> Given </h3>
+{% endif %}
+<ul>
+  {% for rental in person.rentals_to.all %}
+  <li> {{ rental.book.title }} - {{ rental.to.name }} </li>
+  {% endfor %}
+</ul>
+
+{% if person.rentals_from.all %}
+<h3> Received </h3>
+{% endif %}
+<ul>
+  {% for rental in person.rentals_from.all %}
+  <li> {{ rental.book.title }} - {{ rental.by.name }} </li>
+  {% endfor %}
+</ul>
+
+
+{% if person.whishlist.all %}
+<h3> Wishlist </h3>
+{% endif %}
+<ul>
+  {% for book in person.whishlist.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+
+{% if person.reccomended.all %}
+<h3> Recommends </h3>
+{% endif %}
+<ul>
+  {% for book in person.reccomended.all %}
+  <li> {{ book.title }} </li>
+  {% endfor %}
+</ul>
+</div>
+
+{% endblock %}
 

@@ -67,8 +67,8 @@ h4.inline {
 }
 
 .availability {
-	margin-top: 2px;
-	margin-bottom: 2px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 .available {
@@ -117,7 +117,11 @@ h4.inline {
   padding-top: 20px;
 }
 
+#personData li {
+  list-style: none;
+  font-size: 18px;
+}
+
 .hand_on_hover {
 	cursor: pointer;
 }
-

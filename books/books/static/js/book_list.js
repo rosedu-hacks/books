@@ -1,11 +1,24 @@
 global_template = {}
 var global_book_entry = {}
+var loading = false;
+$( document).ready(function() {initial_load()});
 
-$(load_books([]));
-function load_books(tags) {
+function initial_load() {
+	$('.search_bar').on('keyup', function() {
+  	var search_term = $('.search_bar').val();
+		$(".book_list").empty();
+		load_books([], search_term);
+  });
+	load_books([]);
+}
+
+function load_books(tags, search_term) {
 	var query_url = "api/v1/books/?format=json";
 	if (tags.length) {
 		query_url = query_url + "&taggings=" + JSON.stringify(tags);
+	}
+	if (search_term != null) {
+		query_url = query_url + "&title__startswith=" + search_term;
 	}
 
 	$.get(query_url, function ( data ) {
