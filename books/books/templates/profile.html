@@ -3,7 +3,7 @@
 {% block content %}
 <div id="personData">
 {% if person.pk == user.pk %}
-<h1> {{ person.name }} </h1>
+<h1> {{ person.name }} Dashboard</h1>
 
 {% if not person.shared.all and not person.rentals_to.all and not person.rentals_from.all %}
 <div class="alert alert-success">
@@ -24,8 +24,10 @@
 <ul>
   {% for book in person.shared.all %}
   <li>
+  <div class=listContainer>
   {{ book.title }}
-  <a href="/sharing/{{book.pk}}/?action=unshare"><button class="btn btn-inverse">Unshare</button></a>
+  <a href="/sharing/{{book.pk}}/?action=unshare"><button class="btn btn-primary">Unshare</button></a>
+  </div>
   </li>
   {% endfor %}
 </ul>
@@ -36,10 +38,12 @@
 <ul>
   {% for rental in person.rentals_to.all %}
   <li>
+  <div class=listContainer>
   {{ rental.book.title }} - {{ rental.to.name }}
   {% if rental.status == 0 %}
-  <a href="/accept_decline/{{rental.pk}}/?resolution=accept"><button class="btn btn-inverse">Accept</button></a>
-  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-inverse">Decline</button></a>
+  <a href="/accept_decline/{{rental.pk}}/?resolution=accept"><button class="btn btn-primary">Accept</button></a>
+  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-primary">Decline</button></a>
+  </div>
   <div class="alert alert-success">
     <p>
     {{ rental.to.name }} wants to get from you {{rental.book.title}}. You can accept or decline his request.
@@ -51,7 +55,8 @@
 
   {% endif %}
   {% if rental.status == 1 %}
-  <a href="/accept_return/{{rental.pk}}/"><button class="btn btn-inverse">Accept Return</button></a>
+  <a href="/accept_return/{{rental.pk}}/"><button class="btn btn-primary">Accept Return</button></a>
+  </div>
   <div class="alert alert-success">
     <p>
     When you have your book back, please press the Accept Return button!
@@ -68,13 +73,16 @@
 <ul>
   {% for rental in person.rentals_from.all %}
   <li>
+  <div class=listContainer>
   {{ rental.book.title }} - {{ rental.by.name }}
   {% if rental.status == 0 %}
-  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-inverse">Cancel</button></a>
+  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-primary">Cancel</button></a>
+  </div>
   <div class="alert alert-success">Waiting for {{ rental.by.name }} to accept your request</div>
   {% endif %}
 
   {% if rental.status == 1 %}
+  </div>
   <div class="alert alert-success">
     <p>
       Your request has been accepted. If don't have the book,
