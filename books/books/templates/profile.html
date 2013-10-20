@@ -2,6 +2,7 @@
 
 {% block content %}
 <div id="personData">
+{% if person.pk == user.pk %}
 <h1> {{ person.name }} </h1>
 
 {% if not person.shared.all and not person.rentals_to.all and not person.rentals_from.all %}
@@ -104,6 +105,9 @@
   <li> {{ book.title }} </li>
   {% endfor %}
 </ul>
+{% else %}
+Nothing to do here :(
+{% endif %}
 </div>
 
 {% endblock %}
