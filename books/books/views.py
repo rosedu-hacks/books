@@ -101,4 +101,60 @@ class AddBookView(CreateView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(AddBookView, self).dispatch(request, *args, **kwargs)
+
+### Book sharing floow
+### more info here http://www.youtube.com/watch?v=THvUDMafwkU
+
+@login_required
+def accept_decline_view(request, *args, **kwargs):
+    """View used for accepting or declining rentals"""
+
+    # authorization stuff
+    rental = Rental.objects.get(pk=kwargs['pk'])
+    if (rental.by.pk is not request.user.pk or
+            rental.status is not Rental.PENDING_SHARE):
+        return redirect(reverse('overview'))
+
+    resolution = request.GET.get('resolution', 'decline')
+    if resolution == 'accept':
+        rental.status = Rental.ACCEPTED
+        rental.save()
+    if resolution == 'decline':
+        rental.by.shared.add(rental.book)
+        rental.delete()
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
+
+@login_required
+def accept_return_view(request, *args, **kwargs):
+    """View used for accepting retrun of book"""
+
+    # authorization stuff
+    rental = Rental.objects.get(pk=kwargs['pk'])
+    if (rental.by.pk is not request.user.pk or
+            rental.status is not Rental.ACCEPTED):
+        return redirect(reverse('overview'))
+
+    rental.by.shared.add(rental.book)
+    rental.delete()
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
+
+@login_required
+def sharing_view(request, *args, **kwargs):
+    """View used for sharing or unsharing a book"""
+    book = Book.objects.get(pk=kwargs['pk'])
+    person = Person.objects.get(pk=request.user.pk)
+
+    action = request.GET.get('action')
+    if not action:
+        return redirect(reverse('overview'))
+
+    if action == 'share':
+        person.shared.add(book)
+
+    if action == 'unshare':
+        person.shared.remove(book)
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
     

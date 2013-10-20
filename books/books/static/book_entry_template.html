@@ -21,8 +21,12 @@
 			<div id="book_description">{{description}}</div>
 			<div class="book_taglist">
 			</div>
-			<div class="book_status">
-				<button class="btn btn-inverse">Get Book</button>
+			<div class="buttons">
+        {{#if shared_by.length}}
+        <a href="/getbook/{{id}}"> <button class="btn btn-inverse">Get Book</button> </a>
+        {{/if}}
+        <a href="/sharing/{{id}}/?action=share"> <button class="btn btn-inverse">Share</button> </a>
+        <a href="/recc/{{id}}"> <button class="btn btn-inverse">Review</button> </a>
 			</div>
 		</div>
 	</div>
