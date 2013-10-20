@@ -1,13 +1,46 @@
-global_template = {}
-var global_book_entry = {}
-var loading = false;
-$( document).ready(function() {initial_load()});
+var current_tags = [];
+var current_search_term = ""
+$( document).ready(function() {initial_load();});
 
+function load_tag_bar() {
+	$.get("api/v1/tags/?format=json",function(data) {
+			all_tags = ["all"];
+			for (k in data.objects) {
+				all_tags.push(data.objects[k].name)
+			}
+			$(".tag_bar").select2({
+  		tags: all_tags,
+  		tokenSeparators: [",", " "],
+  		width: "resolve",
+  		placeholder: "Tags",
+  		maximumSelectionSize: 3}).on("change", function(e) {
+  			ctags = []
+  			tag_form = $(this).select2('data');
+  			console.log(tag_form);
+  			var usingAll = false;
+  			for (var j in tag_form) {
+  				ctags.push(tag_form[j].text);
+  				if (tag_form[j].text == "all")
+  					usingAll = true;
+  				current_tags = ctags;
+  			}
+  			if (usingAll)
+  				current_tags = [];
+				$(".book_list").empty();
+  			load_books(current_tags, current_search_term);
+  		});
+	});
+
+}
 function initial_load() {
+	load_tag_bar();
+
 	$('.search_bar').on('keyup', function() {
   	var search_term = $('.search_bar').val();
+
 		$(".book_list").empty();
-		load_books([], search_term);
+		current_search_term = search_term;
+		load_books(current_tags, search_term);
   });
 	load_books([]);
 }
@@ -54,7 +87,4 @@ function load_entry(entry, book) {
 }
 
 function tag_click(name) {
-	$(".book_list").empty();
-	tags = [name];
-	load_books(tags);
 }
