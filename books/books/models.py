@@ -6,15 +6,8 @@ class Book(models.Model):
     """Entry for a generic book"""
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-
-    ###TODO
-    @property
-    def picture_url(self):
-        return "http://bks5.books.google.com/books?id=buc0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-
-    @property
-    def description(self):
-        return "Lorem Ipsum blablablalblabla"
+    picture_url = models.CharField(max_length=100)
+    description = models.TextField(max_length=100)
 
     @property
     def rented_by(self):

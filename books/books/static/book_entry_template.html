@@ -1,9 +1,6 @@
 	<div class="book_entry">
 		<div class="stats">
-			<img id="book_cover" src={{picture_url}}></img>
-			<div class="stats_count">
-				<span class="book_views">254</span> views
-			</div>
+			<img class="book_cover" src={{picture_url}}></img>
 		</div>
 		<div class="summary">
 		<div class="top_flex">
@@ -15,7 +12,7 @@
 				{{#if shared_by.length}}
 				<div class="label label-success">Available</div>
 				{{else}}
-				<div class="label label-warning">Unavailable</div>
+				<div class="label label-danger">Unavailable</div>
 				{{/if}}
 			</div>
 			<h4 class="inline">Author:</h4> <span id="name">{{author}}</span>
@@ -33,10 +30,10 @@
 			</div>
 			<div class="buttons">
         {{#if shared_by.length}}
-        <a href="/getbook/{{id}}"> <button class="btn btn-inverse">Get Book</button> </a>
+        <a href="/getbook/{{id}}"> <button class="btn btn-primary">Get Book</button> </a>
         {{/if}}
-        <a href="/sharing/{{id}}/?action=share"> <button class="btn btn-inverse">Share</button> </a>
-        <a href="/recc/{{id}}"> <button class="btn btn-inverse">Review</button> </a>
+        <a href="/sharing/{{id}}/?action=share"> <button class="btn btn-primary">Share</button> </a>
+        <a href="/recc/{{id}}"> <button class="btn btn-primary">Review</button> </a>
 			</div>
 		</div>
 	</div>

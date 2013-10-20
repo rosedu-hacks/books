@@ -4,8 +4,8 @@ body {
 
 .book_entry {
 	border: 1px solid #eaeaea;
-	-webkit-border-radius: 12px;
 	padding: 5px;
+  background-color: #f8f8f8;
 	overflow: hidden;
 	display: -webkit-flex;
 	display: flex;
@@ -70,12 +70,16 @@ body {
 
 }
 
+.book_cover {
+  width: 100px;
+}
+
 .book_taglist {
 	float: left;
 }
 .buttons {
-  position: absolute;
-  bottom: 30px;
+  clear: both;
+  padding-top: 10px;
 }
 
 h4.inline {
@@ -121,6 +125,20 @@ h4.inline {
 	color: #999;
 }
 
+#bookForm li {
+  list-style: none;
+}
+
+#bookForm li > label {
+  background-color: lightgreen;
+  border-radius: 3px;
+  align: right;
+}
+
+#bookForm input[type=checkbox] {
+  float: right;
+}
+
 #pageNav {
   background-color: #0f75bc;
   font-size: 30px;
@@ -147,7 +165,10 @@ h4.inline {
 .content {
   width: 70%;
   margin: auto;
-  padding-top: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px rgba(50, 50, 50, 0.75);
 }
 
 #personData li {
