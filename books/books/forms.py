@@ -20,9 +20,11 @@ class RegisterForm(UserCreationForm):
 
 class ReccomandationForm(forms.Form):
     
-    description = forms.CharField(widget = Textarea())
+    description = forms.CharField(widget = forms.Textarea(attrs={'placeholder': '...'}))
     def __init__(self, *args, **kwargs):
         super(ReccomandationForm, self).__init__(*args, **kwargs)
+        self.fields['description'].widget.attrs['cols'] = 62
+        self.fields['description'].widget.attrs['rows'] = 10
 
 class GetBookForm(forms.Form):
     return_date = forms.DateField(widget=SelectDateWidget)
