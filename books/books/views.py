@@ -117,7 +117,7 @@ def accept_decline_view(request, *args, **kwargs):
 
 @login_required
 def accept_return_view(request, *args, **kwargs):
-    """View used for accepting or declining rentals"""
+    """View used for accepting retrun of book"""
 
     # authorization stuff
     rental = Rental.objects.get(pk=kwargs['pk'])
@@ -130,3 +130,21 @@ def accept_return_view(request, *args, **kwargs):
 
     return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
 
+@login_required
+def sharing_view(request, *args, **kwargs):
+    """View used for sharing or unsharing a book"""
+    book = Book.objects.get(pk=kwargs['pk'])
+    person = Person.objects.get(pk=request.user.pk)
+
+    action = request.GET.get('action')
+    if not action:
+        return redirect(reverse('overview'))
+
+    if action == 'share':
+        person.shared.add(book)
+
+    if action == 'unshare':
+        person.shared.remove(book)
+
+    return redirect(reverse('profile', kwargs={'pk': request.user.pk}))
+    

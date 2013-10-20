@@ -9,7 +9,10 @@
 {% endif %}
 <ul>
   {% for book in person.shared.all %}
-  <li> {{ book.title }} </li>
+  <li>
+  {{ book.title }}
+  <a href="/sharing/{{book.pk}}/?action=unshare"><button class="btn btn-inverse">Unshare</button></a>
+  </li>
   {% endfor %}
 </ul>
 
