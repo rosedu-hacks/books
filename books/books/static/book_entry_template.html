@@ -3,6 +3,8 @@
 			<img class="book_cover" src={{picture_url}}></img>
 		</div>
 		<div class="summary">
+		<div class="top_flex">
+			<div class="summary_top">
 			<h3 id="header">
         <span id="title_outer"><span id="title">{{title}}</span>
           <a href="/editbook/{{id}}"><span class="glyphicon glyphicon-edit padded"></span></a></span>
@@ -15,6 +17,14 @@
 				{{/if}}
 			</div>
 			<h4 class="inline">Author:</h4> <span id="name">{{author}}</span>
+		</div>
+		<div class="sharing_users">
+			{{#if shared_by.length}}
+			<h4>Shared by: </h4>
+			<img class="first_sharing_user"></img>
+			{{/if}}
+		</div>
+		</div> <!-- top_flex -->
 
 			<div id="book_description">{{description}}</div>
 			<div class="book_taglist">
