@@ -38,6 +38,12 @@ a {
 	padding: 0px;
 }
 .sharing_users {
+  font-size: 14px;
+}
+
+.sharing_users img {
+  width: 28px;
+  height: 28px;
 }
 
 .sharing_users > h4 {
@@ -182,6 +188,21 @@ h4.inline {
 #personData li {
   list-style: none;
   font-size: 18px;
+  width: 70%;
+  background: #f8f8f8;
+  padding: 10px;
+  margin: 3px;
+	border: 1px solid #eaeaea;
+}
+
+#personData button {
+  float: right;
+  margin: 2px;
+  display: inline-block;
+}
+
+#personData .listContainer {
+  margin-bottom: 15px;
 }
 
 .hand_on_hover {
