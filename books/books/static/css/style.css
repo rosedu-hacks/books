@@ -4,8 +4,8 @@ body {
 
 .book_entry {
 	border: 1px solid #eaeaea;
-	-webkit-border-radius: 12px;
 	padding: 5px;
+  background-color: #f8f8f8;
 	overflow: hidden;
 	display: -webkit-flex;
 	display: flex;
