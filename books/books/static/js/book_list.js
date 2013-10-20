@@ -87,7 +87,7 @@ function load_books(tags, search_term) {
 }
 
 function load_entry(entry, book) {
-	$(".book_taglist", entry).each(function (){
+	$("#" + book.id + " .book_taglist", entry).each(function (){
 		var entry_taglist = $(this);
 		for (var i in book.tags) {
 			$.get(book.tags[i], function (data){ 
