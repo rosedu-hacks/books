@@ -2,6 +2,14 @@ body {
   background-image: url('/static/img/bg.gif');
 }
 
+a {
+  text-decoration: none;
+}
+
+.padded {
+  padding: 5px;
+}
+
 .book_entry {
 	border: 1px solid #eaeaea;
 	padding: 5px;
