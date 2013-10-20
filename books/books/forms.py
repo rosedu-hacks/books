@@ -51,6 +51,8 @@ class BookForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         book = super(BookForm, self).save(*args, **kwargs)
         tags = Tag.objects.filter(pk__in=self.cleaned_data['tags'])
+
+        book.tags.clear()
         for tag in tags:
             book.tags.add(tag)
 
