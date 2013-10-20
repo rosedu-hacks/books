@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login
-from books.forms import RegisterForm, ReccomandationForm
+from books.forms import RegisterForm, ReccomandationForm, BookForm
 from django.views.generic import FormView, DetailView, CreateView
 from django.shortcuts import redirect, render
 from books.models import Person, Reccomendation
@@ -96,12 +96,18 @@ class GetBookView(FormView):
 class AddBookView(CreateView):
     template_name = "addbook.html"
     model = Book
+    form_class = BookForm
     fields = ['title', 'author', 'picture_url', 'description']
     success_url = '/'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(AddBookView, self).dispatch(request, *args, **kwargs)
+
+    def clean_tags(self):
+        data = self.cleaned_data['tags']
+        tags = Tag.objects.filter(pk__in=data)
+        return tags
 
 ### Book sharing floow
 ### more info here http://www.youtube.com/watch?v=THvUDMafwkU

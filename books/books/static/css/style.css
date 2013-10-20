@@ -102,6 +102,20 @@ h4.inline {
 	color: #999;
 }
 
+#bookForm li {
+  list-style: none;
+}
+
+#bookForm li > label {
+  background-color: lightgreen;
+  border-radius: 3px;
+  align: right;
+}
+
+#bookForm input[type=checkbox] {
+  float: right;
+}
+
 #pageNav {
   background-color: #0f75bc;
   font-size: 30px;
