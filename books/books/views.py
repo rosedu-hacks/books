@@ -112,8 +112,8 @@ def accept_decline_view(request, *args, **kwargs):
 
     # authorization stuff
     rental = Rental.objects.get(pk=kwargs['pk'])
-    if (rental.by.pk is not request.user.pk or
-            rental.status is not Rental.PENDING_SHARE):
+    correct_user = rental.by.pk is request.user.pk or rental.to.pk is request.user.pk
+    if correct_user or rental.status is not Rental.PENDING_SHARE:
         return redirect(reverse('overview'))
 
     resolution = request.GET.get('resolution', 'decline')

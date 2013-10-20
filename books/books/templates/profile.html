@@ -70,6 +70,7 @@
   <li>
   {{ rental.book.title }} - {{ rental.by.name }}
   {% if rental.status == 0 %}
+  <a href="/accept_decline/{{rental.pk}}/?resolution=decline"><button class="btn btn-inverse">Cancel</button></a>
   <div class="alert alert-success">Waiting for {{ rental.by.name }} to accept your request</div>
   {% endif %}
 
