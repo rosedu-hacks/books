@@ -49,17 +49,22 @@ class ReccomandationView(FormView):
     model = Reccomendation
     form_class = ReccomandationForm
     
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        self.book = Book.ojects.get(pk = kwargs['pk'])
+        self.book = Book.objects.get(pk = kwargs['pk'])
         return super(ReccomandationView, self).dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         person = Person.objects.get(pk=request.user.pk)
         Reccomendation.objects.create(by=person, book=self.book)
-        return redirect('/')
+        return redirect(reverse('profile', kwargs={'pk':request.user.pk}))
 
     def get_context_data(self, **kwargs):
-        return super(ReccomandationView, self).get_context_data(**kwargs)
+        context = super(ReccomandationView, self).get_context_data(**kwargs)
+        #context['bookform'] = ReccomandationForm(book=self.book)
+        context['book'] = self.book
+        return context
+
 class GetBookView(FormView):
     template_name = 'getbook.html'
     form_class = GetBookForm

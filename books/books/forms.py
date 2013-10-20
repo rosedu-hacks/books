@@ -19,14 +19,10 @@ class RegisterForm(UserCreationForm):
         return person
 
 class ReccomandationForm(forms.Form):
-    class Meta:
-        model = Book
-        fields = ('title', 'description')
     
     description = forms.CharField(widget = Textarea())
-    
     def __init__(self, *args, **kwargs):
-        return super(ReccomandationForm, self).__init__(*args, **kwargs)
+        super(ReccomandationForm, self).__init__(*args, **kwargs)
 
 class GetBookForm(forms.Form):
     return_date = forms.DateField(widget=SelectDateWidget)
