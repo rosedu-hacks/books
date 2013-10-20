@@ -18,7 +18,8 @@ class Overview(TemplateView):
 class Register(FormView):
     template_name = 'register.html'
     form_class = RegisterForm
-    
+
+
     def post(self, request, *args, **kwargs):
         form = RegisterForm(request.POST)
         if form.is_valid():

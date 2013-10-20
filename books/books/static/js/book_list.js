@@ -32,8 +32,20 @@ function load_tag_bar() {
 	});
 
 }
+function welcome_message(){
+    if (document.cookie.indexOf("visitedabcd") >= 0) {
+    }
+    else {
+        expiry = new Date();
+        expiry.setTime(expiry.getTime()+(10*60*1000)); // Ten minutes
+                 // Date()'s toGMTSting() method will format the date correctly for a cookie
+        document.cookie = "visitedabcd=yes";
+        $(".welcome").css({"display": "block"}) 
+    }
+}
 function initial_load() {
 	load_tag_bar();
+    welcome_message();
 
 	$('.search_bar').on('keyup', function() {
   	var search_term = $('.search_bar').val();
