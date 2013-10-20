@@ -2,12 +2,38 @@
 
 {% block content %}
 
+<style>
+p, ul {
+	border: 1px solid #eaeaea;
+	padding: 5px;
+  background-color: #f8f8f8;
+	overflow: hidden;
+  padding-bottom: 10px;
+  margin-bottom: 2px;
+  position: relative;
+  width: 50%;
+}
+
+p > input {
+	float: right;
+}
+P >textarea {
+	float: right;
+}
+</style>
+
+<script>
+$( document).ready(function() {
+});
+
+</script>
 <h1> Add your book </h1>
 <form method="post" action>
   {% csrf_token %}
   <table id="bookForm">
-    {{ form.as_table }}
+    {{ form.as_p }}
   </table>
+
   <button type="submit" class="btn">Add it!</button>
 </form>
 
